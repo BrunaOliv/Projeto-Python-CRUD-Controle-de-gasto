@@ -1,0 +1,49 @@
+{% extends 'modelo.html' %}
+
+{% load static %}
+
+{% block conteudo %}
+
+<h3>Lista de Transações</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Categoria</th>
+                <th>Opções</th>
+                
+            </tr>
+
+            {% for transacao in object_list %}
+            <tr>
+                <td>{{ transacao.data }}</td>
+                <td>{{ transacao.descricao }}</td>
+                <td>{{ transacao.valor }}</td>
+                <td>{{ transacao.categoria }}</td>
+                <td>
+                    <a href="{% url 'update_transacao' transacao.pk %}" class="btn btn-warning">Editar</a> 
+                    <a href="{% url 'delete_transacao' transacao.pk %}" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+           
+
+            {% empty %}
+                <tr>
+                    <td colspan="5">Nenhum campo registrado</td>
+                </tr>
+
+            {% endfor %}
+
+            <tr>
+                <td>Total</td>
+                <td>
+                    {{object.preco_total}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+
+{% endblock %}
