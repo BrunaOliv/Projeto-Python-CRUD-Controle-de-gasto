@@ -12,7 +12,7 @@ from django.db.models import Sum
 # Create your views here.
 
 class IndexView(TemplateView):
-    template_name = "modelo.html"
+    template_name = "index.html"
 
 class TransacaoCreat(CreateView):
     model = Transacao
@@ -34,7 +34,6 @@ class TransacaoDelete(DeleteView):
 class TransacaoList(ListView):
     model = Transacao
     template_name = 'list.html'
-    #model = Transacao.objects.all().aggregate(sum=Sum('valor'))
 
 
 def listagem(request):
@@ -42,8 +41,4 @@ def listagem(request):
     data['transacoes'] = Transacao.objects.all()
     _sum = Transacao.objects.all().aggregate(sum=Sum('valor'))
     data['sum'] = _sum
-    print(_sum)
-    print(data)
     return render(request, 'list.html', data)
-
-    #

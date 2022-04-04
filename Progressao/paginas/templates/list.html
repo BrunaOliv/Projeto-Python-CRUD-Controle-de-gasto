@@ -3,8 +3,8 @@
 {% load static %}
 
 {% block conteudo %}
-
-<h3>Lista de Transações</h3>
+<div class="container my-5">
+    <h3 class="mb-3">Lista de Transações</h3>
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>
@@ -18,9 +18,9 @@
 
             {% for transacao in transacoes %}
             <tr>
-                <td>{{ transacao.data }}</td>
+                <td>{{ transacao.data|date:"d/m/Y" }}</td>
                 <td>{{ transacao.descricao }}</td>
-                <td>{{ transacao.valor }}</td>
+                <td>{{ transacao.valor|floatformat:2 }}</td>
                 <td>{{ transacao.categoria }}</td>
                 <td>
                     <a href="{% url 'update_transacao' transacao.pk %}" class="btn btn-warning">Editar</a> 
@@ -36,14 +36,16 @@
 
             {% endfor %}
 
-            <tr>
-                <td>Total</td>
-                <td>
-                    {{sum.sum}}
+            <tr class="align-items-end">
+                <td colspan="4"><b>Total</b></td>
+                <td class="table-info">
+                    {{sum.sum|floatformat:2}}
                 </td>
             </tr>
         </table>
     </div>
     
+
+</div>
 
 {% endblock %}
