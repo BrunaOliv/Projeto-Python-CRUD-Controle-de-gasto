@@ -16,7 +16,7 @@
                 
             </tr>
 
-            {% for transacao in object_list %}
+            {% for transacao in transacoes %}
             <tr>
                 <td>{{ transacao.data }}</td>
                 <td>{{ transacao.descricao }}</td>
@@ -39,7 +39,7 @@
             <tr>
                 <td>Total</td>
                 <td>
-                    {{object.preco_total}}
+                    {{sum.sum}}
                 </td>
             </tr>
         </table>

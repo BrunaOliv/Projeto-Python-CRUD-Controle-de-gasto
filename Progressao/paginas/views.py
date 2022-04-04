@@ -34,15 +34,16 @@ class TransacaoDelete(DeleteView):
 class TransacaoList(ListView):
     model = Transacao
     template_name = 'list.html'
-    data = Transacao.objects.all().aggregate(sum=Sum('valor'))
-    print(data)
+    #model = Transacao.objects.all().aggregate(sum=Sum('valor'))
+
 
 def listagem(request):
     data = {}
     data['transacoes'] = Transacao.objects.all()
-    return render(request, 'contas/listagem.html', data) 
-
-def Sum(request):
     _sum = Transacao.objects.all().aggregate(sum=Sum('valor'))
+    data['sum'] = _sum
     print(_sum)
-    return render(request, 'list.html', {"sum":_sum})
+    print(data)
+    return render(request, 'list.html', data)
+
+    #
