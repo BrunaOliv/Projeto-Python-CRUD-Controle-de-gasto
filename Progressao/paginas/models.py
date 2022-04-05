@@ -21,11 +21,3 @@ class Transacao(models.Model):
 
     def __str__(self):
         return self.descricao
-        
-    def valor_total(self):
-        transacoes = self.valor.all() # aplicar filtros padroes se precisar
-        preco_total = 0.00
-        for transacao in transacoes:
-            preco_total += transacao.preco
-            print(preco_total)
-            return preco_total

@@ -2,6 +2,12 @@
 
 {% load static %}
 
+{% load crispy_forms_tags %}
+
+{% block titulo %}
+    <title>Formulário</title>
+{% endblock %}
+
 {% block conteudo %}
 <div class="container my-5">
     <h3>Cadastro</h3>
@@ -12,7 +18,7 @@
     <form action="" method="POST">
         {% csrf_token %}
 
-        {{ form.as_p }}
+        {{ form|crispy }}
 
         <button type="submit" class="btn btn-primary">Cadastrar</button>
 

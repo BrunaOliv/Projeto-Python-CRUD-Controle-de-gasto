@@ -37,8 +37,22 @@ class TransacaoList(ListView):
 
 
 def listagem(request):
-    data = {}
-    data['transacoes'] = Transacao.objects.all()
-    _sum = Transacao.objects.all().aggregate(sum=Sum('valor'))
-    data['sum'] = _sum
-    return render(request, 'list.html', data)
+    object_list = {}
+    object_list = Transacao.objects.all()
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+    categoria = request.GET.get('categoria')
+    descricao = request.GET.get('descricao')
+    print(categoria)
+    if start_date and end_date:
+       object_list = object_list.filter(data__range=[start_date, end_date])
+
+    if categoria:
+       object_list = object_list.filter(categoria=categoria)
+
+    if descricao:
+       object_list = object_list.filter(descricao__icontains=descricao)    
+
+    _sum = object_list.aggregate(sum=Sum('valor'))
+    context = {'object_list' : object_list, 'sum':_sum}
+    return render(request, 'list.html', context)

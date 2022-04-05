@@ -2,9 +2,54 @@
 
 {% load static %}
 
+{% block titulo %}
+    <title>lista de gastos</title>
+{% endblock %}
+
 {% block conteudo %}
 <div class="container my-5">
     <h3 class="mb-3">Lista de Transações</h3>
+    <form >
+        <div class="row mb-4">
+            <div class="col">
+                <span>Data Início</span>
+                <input class="form-control " name="start_date" type="date">
+            </div>
+            <div class="col">
+                <span>Data Final</span>
+                <input class="form-control " name="end_date" type="date">
+            </div>
+            <div class="col">
+                <span>Categorias</span>
+                <div class="input-group">
+                    <select class="form-select" id="inputGroupSelect01" name="categoria">
+                    <option value="">Choose...</option>
+                    <option value="1">Despesas Gerais</option>
+                    <option value="2">Saúde</option>
+                    <option value="3">Estudo</option>
+                    <option value="4">Lazer</option>
+                    <option value="5">Alimentação</option>
+                    </select>
+                </div>
+            </div>
+ 
+            <div class="col">
+                <span>Descrição</span>
+                <input class="form-control " name="descricao" type="text">
+            </div>
+            <div class="col d-flex align-items-end">
+                <button class="btn btn-primary me-1" type="submit" autocomplete="off">Filtrar</button>
+                <button  class="btn btn-primary" href="{% url 'list_transacao' %}">Limpar filtro</button >
+            </div>
+
+            
+
+            
+            
+
+        </div>
+    </form>
+    
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>
@@ -16,7 +61,7 @@
                 
             </tr>
 
-            {% for transacao in transacoes %}
+            {% for transacao in object_list %}
             <tr>
                 <td>{{ transacao.data|date:"d/m/Y" }}</td>
                 <td>{{ transacao.descricao }}</td>
