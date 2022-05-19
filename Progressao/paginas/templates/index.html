@@ -7,9 +7,19 @@
 {% endblock %}
 
 {% block conteudo %}
-     
-    <div class="d-flex justify-content-center">
-        <img class="mt-4" src="{% static 'img/gasto6.jpg' %}" width="75%">
-    </div>
+     <div class="row">
+        <div class="col">
+            <img  src="{% static 'img/gasto6.jpg' %}" width="140%" style="position: relative; right: 210px; top: 60px;" >
+        </div>
+        <div class="col d-flex align-items-center">
+            <div class="pe-5">
+                <h2 class="text-end mt-5">Controle suas contas com facilidade e segurança!</h2>
+                <h6 class="text-end">O Contas Online é um controle financeiro para uso empresarial<br> ou pessoal, totalmente personalizável para atendê-lo <br>da melhor forma possível.</h6>
+                <div class="d-flex justify-content-end mt-5">
+                    <button class="btn btn-info">Saiba mais</button>
+                </div>    
+            </div>
+        </div>
+    </div> 
 
 {% endblock %}

@@ -27,10 +27,7 @@
               <a class="nav-link" href="{% url 'index' %}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'cadastrar_transacao' %}">Add Gasto</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'list_transacao' %}">Lista de Gastos</a>
+              <a class="nav-link" href="{% url 'list_transacao' %}">Lista de Despesas</a>
             </li>
           </ul>
         </div>
@@ -42,12 +39,7 @@
     <div class="container mb-5">Destaque</div>
     {% endblock %}
 
-    {% block rodape %}
-  <footer class="bg-info fixed-bottom" >
-    <div class="container my-2 d-flex justify-content-center"><span class="text-center">2022 Desenvolvido por Bruna Soares</span></div>
-  </footer>
-
-    {% endblock %}
+   
 
     <link rel="stylesheet" href="{% static 'js/bootstrap.min.js' %}">
 </body>

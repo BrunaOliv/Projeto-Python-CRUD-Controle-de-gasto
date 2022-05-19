@@ -16,13 +16,13 @@ class IndexView(TemplateView):
 
 class TransacaoCreat(CreateView):
     model = Transacao
-    fields = ['data', 'descricao', 'valor', 'categoria', 'observacoes']
+    fields = ['data', 'descricao', 'valor', 'categoria']
     template_name = 'form.html'
     success_url = reverse_lazy('list_transacao')
 
 class TransacaoUpdate(UpdateView):
     model = Transacao
-    fields = ['data', 'descricao', 'valor', 'categoria', 'observacoes']
+    fields = ['data', 'descricao', 'valor', 'categoria']
     template_name = 'form.html'
     success_url = reverse_lazy('list_transacao') 
 
